@@ -1,4 +1,4 @@
-
+```groovy
 pipeline {
     agent any
 
@@ -12,13 +12,13 @@ pipeline {
 
         stage('Compile') {
             steps {
-                bat 'python -m py_compile app.py apptest.py'
+                bat 'python -m py_compile app.py app_test.py'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'python -m unittest apptest -v'
+                bat 'python -m unittest app_test -v'
             }
         }
 
@@ -30,8 +30,9 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat 'tar -a -c -f python-cicd.zip app.py apptest.py requirements.txt'
+                bat 'tar -a -c -f pythoncicd.zip app.py app_test.py requirements.txt'
             }
         }
     }
 }
+```
